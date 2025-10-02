@@ -1,0 +1,938 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Vanilla JS Slider</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/optimize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <a class="logo__link" href="#"
+          ><img class="logo__img" src="img/logo.svg" alt="logo"
+        /></a>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div
+        class="slider"
+        aria-roledescription="carousel"
+        aria-label="Галерея зображень"
+      >
+        <div class="slides">
+          <div class="slide" data-index="0">
+            <img src="img/slide1.webp" alt="img" />
+            <h1 class="slide__title">Test slider</h1>
+          </div>
+          <div class="slide" data-index="1">
+            <img src="img/slide2.webp" alt="img" />
+            <h1 class="slide__title">Owoooooo</h1>
+          </div>
+          <div class="slide" data-index="2">
+            <img src="img/slide1.webp" alt="img" />
+            <h1 class="slide__title">Test slider</h1>
+          </div>
+        </div>
+        <div class="container">
+          <!-- Кнопки-стрілки -->
+          <button
+            class="arrow arrow-left"
+            aria-label="Попередній"
+            id="prevBtn"
+            title="Попередній"
+          >
+            <svg
+              width="40"
+              height="24"
+              viewBox="0 0 40 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_17_127)">
+                <path
+                  d="M59.0005 11.9995L3.99935 11.9997M3.99935 11.9997L13.9871 21.9874M3.99935 11.9997L13.9871 2.01191"
+                  stroke="#EFF3F5"
+                  stroke-width="4"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_17_127">
+                  <rect
+                    width="40"
+                    height="24"
+                    fill="white"
+                    transform="matrix(-1 0 0 1 40 0)"
+                  />
+                </clipPath>
+              </defs>
+            </svg>
+          </button>
+
+          <button
+            class="arrow arrow-right"
+            aria-label="Наступний"
+            id="nextBtn"
+            title="Наступний"
+          >
+            <svg
+              width="40"
+              height="24"
+              viewBox="0 0 40 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_17_129)">
+                <path
+                  d="M-19.0005 11.9995L36.0006 11.9997M36.0006 11.9997L26.0129 21.9874M36.0006 11.9997L26.0129 2.01191"
+                  stroke="#EFF3F5"
+                  stroke-width="4"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_17_129">
+                  <rect width="40" height="24" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
+          </button>
+          <!-- Decorative element-->
+          <div class="decorative">
+            <img
+              class="decorative__element decorative__left"
+              src="img/ornament1.svg"
+              alt="decorative element"
+            />
+            <hr class="decorative__line" />
+            <img
+              class="decorative__element decorative__right"
+              src="img/ornament2.svg"
+              alt="decorative element"
+            />
+          </div>
+        </div>
+
+        <span class="visually-hidden" id="slideStatus">Слайд 1 з 3</span>
+      </div>
+    </section>
+
+    <!-- Сonstructed objects-->
+    <section class="objects">
+      <div class="container">
+        <h2 class="objects__title">Збудовані обʼєкти</h2>
+
+        <div class="objects__inner">
+          <div class="tabs">
+            <button class="tab active" data-filter="all">Усі</button>
+            <button class="tab" data-filter="business">Бізнес</button>
+            <button class="tab" data-filter="сomfort">Comfort</button>
+            <button class="tab" data-filter="premium">Premium</button>
+          </div>
+
+          <div class="cards">
+            <!-- Business cards -->
+            <!-- business 1 -->
+            <div class="card" data-category="business">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2025 р.</span>
+                  <span class="card__type">Бізнес</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">
+                  Будівництво<br />
+                  «ЖК Skyline Residence»
+                </h3>
+                <p class="card__address">Київ, вул. Січових Стрільців, 25</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Іпотека</a>
+                  <a class="card__tag" href="#">Розтермінування</a>
+                  <a class="card__tag" href="#">Знижки</a><br />
+                  <a class="card__tag" href="#">Розвинена інфраструктура</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+            <!-- business 2 -->
+            <div class="card" data-category="business">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2024 р.</span>
+                  <span class="card__type">Бізнес</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">
+                  Будівництво<br />
+                  "ЖК Central Plaza"
+                </h3>
+                <p class="card__address">Дніпро, вул. Центральна, 45</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Іпотека</a>
+                  <a class="card__tag" href="#">Знижки</a><br />
+                  <a class="card__tag" href="#">Розвинена інфраструктура</a>
+                  <a class="card__tag" href="#">Дитячий майданчик</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+            <!-- business 3 -->
+            <div class="card" data-category="business">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2024 р.</span>
+                  <span class="card__type">Бізнес</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">
+                  Будівництво<br />
+                  «ЖК Horizon City»
+                </h3>
+                <p class="card__address">Київ, просп. Перемоги, 89</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Іпотека</a>
+                  <a class="card__tag" href="#">Розтермінування</a>
+                  <a class="card__tag" href="#">Охорона території</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+            <!-- business 4 -->
+            <div class="card" data-category="business">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2022 р.</span>
+                  <span class="card__type">Бізнес</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">
+                  Будівництво<br />
+                  «ЖК Royal Park»
+                </h3>
+                <p class="card__address">Дніпро, вул. Кільцева, 17</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Басейн</a>
+                  <a class="card__tag" href="#">Розтермінування</a>
+                  <a class="card__tag" href="#">Фітнес-центр</a>
+                  <a class="card__tag" href="#">Дитячий майданчик</a>
+                  <a class="card__tag" href="#">Іпотека</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+            <!-- business 5 -->
+            <div class="card" data-category="business">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2024 р.</span>
+                  <span class="card__type">Бізнес</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">Будівництво<br />«ЖК FutureLand»</h3>
+                <p class="card__address">Одеса, вул. Паркова, 16</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Знижки</a>
+                  <a class="card__tag" href="#">Фітнес-центр</a>
+                  <a class="card__tag" href="#">Іпотека</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+            <!-- business 6 -->
+            <div class="card" data-category="business">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2022 р.</span>
+                  <span class="card__type">Бізнес</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">Будівництво<br />«ЖК Aurora»</h3>
+                <p class="card__address">Харків, вул. Грушевського, 61</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Фітнес-центр</a>
+                  <a class="card__tag" href="#">Паркінг</a>
+                  <a class="card__tag" href="#">Поруч метро</a><br />
+                  <a class="card__tag" href="#">Охорона території</a>
+                  <a class="card__tag" href="#">Розтермінування</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+            <!-- business 7 -->
+            <div class="card" data-category="business">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2022 р.</span>
+                  <span class="card__type">Бізнес</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">Будівництво<br />«ЖК Royal Park»</h3>
+                <p class="card__address">Житомир, вул. Паркова, 134</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Поруч метро</a>
+                  <a class="card__tag" href="#">Дитячий майданчик</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+            <!-- business 8 -->
+            <div class="card" data-category="business">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2024 р.</span>
+                  <span class="card__type">Бізнес</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">Будівництво<br />«ЖК FutureLand»</h3>
+                <p class="card__address">Полтава, вул. Кільцева, 15</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Фітнес-центр</a>
+                  <a class="card__tag" href="#">Іпотека</a>
+                  <a class="card__tag" href="#">Знижки</a>
+                  <a class="card__tag" href="#">Паркінг</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+            <!-- business 9 -->
+            <div class="card" data-category="business">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2025 р.</span>
+                  <span class="card__type">Бізнес</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">Будівництво<br />«ЖК HighTower»</h3>
+                <p class="card__address">Вінниця, вул. Шевченка, 97</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Басейн</a>
+                  <a class="card__tag" href="#">Дитячий майданчик</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+            <!-- Business cards end -->
+
+            <!-- Comfort cards -->
+            <!-- Comfort 1 -->
+            <div class="card" data-category="сomfort">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2023 р.</span>
+                  <span class="card__type">Comfort</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">Будівництво<br />«ЖК Green Park»</h3>
+                <p class="card__address">Львів, вул. Стрийська, 78</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Іпотека</a>
+                  <a class="card__tag" href="#">Розвинена інфраструктура</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+            <!-- Comfort 2 -->
+            <div class="card" data-category="сomfort">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2022 р.</span>
+                  <span class="card__type">Comfort</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">
+                  Будівництво<br />«ЖК Сонячний квартал»
+                </h3>
+                <p class="card__address">Харків, просп. Гагаріна, 101</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Розтермінування</a>
+                  <a class="card__tag" href="#">Іпотека</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+            <!-- Comfort 3 -->
+            <div class="card" data-category="сomfort">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2025 р.</span>
+                  <span class="card__type">Comfort</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">Будівництво<br />«ЖК Лісова мрія»</h3>
+                <p class="card__address">Ірпінь, вул. Соборна, 99</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Знижки</a>
+                  <a class="card__tag" href="#">Паркінг</a>
+                  <a class="card__tag" href="#">Розвинена інфраструктура</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+            <!-- Comfort 4 -->
+            <div class="card" data-category="сomfort">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2025 р.</span>
+                  <span class="card__type">Comfort</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">Будівництво<br />«ЖК Grand Plaza»</h3>
+                <p class="card__address">Львів, вул. Шевченка, 45</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Паркінг</a>
+                  <a class="card__tag" href="#">Іпотека</a>
+                  <a class="card__tag" href="#">Знижки</a>
+                  <a class="card__tag" href="#">Розтермінування</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+            <!-- Comfort 5 -->
+            <div class="card" data-category="сomfort">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2025 р.</span>
+                  <span class="card__type">Comfort</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">Будівництво<br />«ЖК EcoTown»</h3>
+                <p class="card__address">Житомир, вул. Грушевського, 16</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Розтермінування</a>
+                  <a class="card__tag" href="#">Охорона території</a>
+                  <a class="card__tag" href="#">Басейн</a>
+                  <a class="card__tag" href="#">Дитячий майданчик</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+            <!-- Comfort 6 -->
+            <div class="card" data-category="сomfort">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2024 р.</span>
+                  <span class="card__type">Comfort</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">Будівництво<br />«ЖК RiverSide»</h3>
+                <p class="card__address">Львів, вул. Шевченка, 87</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Охорона території</a>
+                  <a class="card__tag" href="#">Розтермінування</a><br />
+                  <a class="card__tag" href="#">Фітнес-центр</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+            <!-- Comfort 7 -->
+            <div class="card" data-category="сomfort">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2025 р.</span>
+                  <span class="card__type">Comfort</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">Будівництво<br />«ЖК EcoTown»</h3>
+                <p class="card__address">Полтава, вул. Кільцева, 85</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Знижки</a>
+                  <a class="card__tag" href="#">Іпотека</a>
+                  <a class="card__tag" href="#">Охорона території</a><br />
+                  <a class="card__tag" href="#">Фітнес-центр</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+            <!-- Comfort 8 -->
+            <div class="card" data-category="сomfort">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2022 р.</span>
+                  <span class="card__type">Comfort</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">Будівництво<br />«ЖК CityLife»</h3>
+                <p class="card__address">Житомир, вул. Незалежності, 114</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Басейн</a>
+                  <a class="card__tag" href="#">Паркінг</a>
+                  <a class="card__tag" href="#">Іпотека</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+            <!-- Comfort 9 -->
+            <div class="card" data-category="сomfort">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2023 р.</span>
+                  <span class="card__type">Comfort</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">Будівництво<br />«ЖК Sunrise»</h3>
+                <p class="card__address">Київ, вул. Центральна, 44</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Розтермінування</a>
+                  <a class="card__tag" href="#">Дитячий майданчик</a>
+                  <a class="card__tag" href="#">Розвинена інфраструктура</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+            <!-- Comfort cards end -->
+
+            <!-- Premium  cards-->
+            <!-- Premium 1 -->
+            <div class="card" data-category="premium">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2025 р.</span>
+                  <span class="card__type">Premium</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">
+                  Будівництво<br />«ЖК Riviera Towers»
+                </h3>
+                <p class="card__address">Одеса, Французький бульвар, 15</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Знижки</a>
+                  <a class="card__tag" href="#">Паркінг</a>
+                  <a class="card__tag" href="#">Розвинена інфраструктура</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+            <!-- Premium 2 -->
+            <div class="card" data-category="premium">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2023 р.</span>
+                  <span class="card__type">Premium</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">
+                  Будівництво<br />«ЖК Panorama Hills»
+                </h3>
+                <p class="card__address">Київ, вул. Метрологічна, 12</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Іпотека</a>
+                  <a class="card__tag" href="#">Розтермінування</a>
+                  <a class="card__tag" href="#">Фітнес-центр</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+            <!-- Premium 3 -->
+            <div class="card" data-category="premium">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2022 р.</span>
+                  <span class="card__type">Premium</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">Будівництво<br />«ЖК CityLife»</h3>
+                <p class="card__address">Київ, вул. Шевченка, 59</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Знижки</a>
+                  <a class="card__tag" href="#">Басейн</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+            <!-- Premium 4 -->
+            <div class="card" data-category="premium">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2023 р.</span>
+                  <span class="card__type">Premium</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">Будівництво<br />«ЖК CityLife»</h3>
+                <p class="card__address">Харків, вул. Центральна, 79</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Басейн</a>
+                  <a class="card__tag" href="#">Паркінг</a>
+                  <a class="card__tag" href="#">Розтермінування</a><br />
+                  <a class="card__tag" href="#">Дитячий майданчик</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+            <!-- Premium 5 -->
+            <div class="card" data-category="premium">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2024 р.</span>
+                  <span class="card__type">Premium</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">Будівництво<br />«ЖК EcoTown»</h3>
+                <p class="card__address">Харків, вул. Паркова, 2</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Паркінг</a>
+                  <a class="card__tag" href="#">Дитячий майданчик</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+            <!-- Premium 6 -->
+            <div class="card" data-category="premium">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2022 р.</span>
+                  <span class="card__type">Premium</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">Будівництво<br />«ЖК FutureLand»</h3>
+                <p class="card__address">Дніпро, вул. Центральна, 57</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Розтермінування</a>
+                  <a class="card__tag" href="#">Паркінг</a>
+                  <a class="card__tag" href="#">Басейн</a>
+                  <a class="card__tag" href="#">Знижки</a>
+                  <a class="card__tag" href="#">Фітнес-центр</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+            <!-- Premium 7 -->
+            <div class="card" data-category="premium">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2022 р.</span>
+                  <span class="card__type">Premium</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">Будівництво<br />«ЖК SunnySide»</h3>
+                <p class="card__address">Вінниця, вул. Грушевського, 148</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Басейн</a>
+                  <a class="card__tag" href="#">Розтермінування</a>
+                  <a class="card__tag" href="#">Знижки</a><br />
+                  <a class="card__tag" href="#">Дитячий майданчик</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+            <!-- Premium 8 -->
+            <div class="card" data-category="premium">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2023 р.</span>
+                  <span class="card__type">Premium</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">Будівництво<br />«ЖК Victory»</h3>
+                <p class="card__address">Львів, вул. Грушевського, 105</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Поруч метро</a>
+                  <a class="card__tag" href="#">Розтермінування</a><br />
+                  <a class="card__tag" href="#">Охорона території</a>
+                  <a class="card__tag" href="#">Басейн</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+            <!-- Premium 9 -->
+            <div class="card" data-category="premium">
+              <div class="card__wrapper">
+                <img class="card__decore-header" src="img/pin.svg" alt="pin" />
+                <div class="info">
+                  <span class="card__year">2024 р.</span>
+                  <span class="card__type">Premium</span>
+                </div>
+                <img class="card__img" src="img/building.webp" alt="building" />
+                <h3 class="card__title">Будівництво<br />«ЖК Royal Park»</h3>
+                <p class="card__address">Київ, вул. Паркова, 115</p>
+                <div class="card__tags">
+                  <p class="card__tags-title">Переваги:</p>
+                  <a class="card__tag" href="#">Дитячий майданчик</a>
+                  <a class="card__tag" href="#">Фітнес-центр</a>
+                </div>
+              </div>
+              <img
+                class="card__decore-footer"
+                src="img/down.webp"
+                alt="decore"
+              />
+            </div>
+
+            <!-- Premium  cards end -->
+          </div>
+
+          <!-- Кнопка "Завантажити ще" тепер під картками -->
+          <div class="load-more-container">
+            <button id="loadMore">Завантажити ще</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Сonstructed objects end -->
+
+    <!-- Contact -->
+    <section class="contact">
+      <div class="container">
+        <div class="contact__inner">
+          <div class="contact__item">
+            <!-- Decorative element-->
+            <div class="contact__decorative">
+              <img
+                class="decorative__element contact__decorative-left"
+                src="img/ornament1.svg"
+                alt="decorative element"
+              />
+              <hr class="decorative__line" />
+              <span class="contact__decorative-right">Smarto</span>
+            </div>
+            <h2 class="contact__title">Контакти</h2>
+            <div class="contact__info">
+              <div class="contact__info-items">
+                <div class="contact__info-item">
+                  <h4 class="contact__info-title">Головний офіс:</h4>
+                  <a
+                    class="contact__info-link"
+                    href="mailto:SmartorangeTest@gmail.com"
+                    >SmartorangeTest@gmail.com</a
+                  >
+                  <a class="contact__google-maps" href="#"
+                    >Відкрити на Google maps</a
+                  >
+                </div>
+                <div class="contact__info-item">
+                  <h4 class="contact__info-title">Наші соцмережі:</h4>
+                  <div class="contact__social-wrapper">
+                    <!-- instagram -->
+                    <a class="contact__social-link" href="#">
+                      <img
+                        class="contact__social-img"
+                        src="img/instagram.svg"
+                        alt="instagram"
+                      />
+                    </a>
+                    <!-- youtube -->
+                    <a class="contact__social-link" href="#">
+                      <img
+                        class="contact__social-img"
+                        src="img/youtube.svg"
+                        alt="youtube"
+                      />
+                    </a>
+                    <!-- facebook -->
+                    <a class="contact__social-link" href="#">
+                      <img
+                        class="contact__social-img"
+                        src="img/facebook.svg"
+                        alt="facebook"
+                      />
+                    </a>
+                    <!-- tiktok -->
+                    <a class="contact__social-link" href="#">
+                      <img
+                        class="contact__social-img"
+                        src="img/tiktok.svg"
+                        alt="tiktok"
+                      />
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="contact__info-items">
+                <div class="contact__info-item">
+                  <h4 class="contact__info-title">Телефони відділів:</h4>
+                  <div class="contact__info-wrapper">
+                    <a class="contact__tell" href="tel:+380444444444"
+                      >(044) 444-44-44</a
+                    >
+                    <span>( Юридичний відділ )</span>
+                  </div>
+                  <div class="contact__info-wrapper">
+                    <a class="contact__tell" href="tel:+380555555555"
+                      >(055) 555-55-55</a
+                    >
+                    <span>( Бухгалтерія )</span>
+                  </div>
+                </div>
+                <div class="contact__info-item info-email-item">
+                  <h4 class="contact__info-title">Email:</h4>
+                  <a href="mailto:office@smarto.ua">office@smarto.ua</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="contact__item">
+            <img class="contact__img" src="img/contact-img.webp" alt="img" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact end -->
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
