@@ -102,6 +102,7 @@
   });
 })();
 
+
 // Tabs filter for cards
 const tabs = document.querySelectorAll('.tab');
 const cards = document.querySelectorAll('.card');
@@ -123,7 +124,7 @@ function filterCards(filter) {
     .classList.add('active');
 
   // Сховаємо всі картки
-  cards.forEach(card => card.classList.remove('show'));
+  cards.forEach(card => (card.style.display = 'none'));
 
   let filteredCards = [];
 
@@ -143,7 +144,7 @@ function filterCards(filter) {
 
   // Показуємо максимум 3 картки
   filteredCards.forEach((card, idx) => {
-    if (idx < 3) card.classList.add('show');
+    if (idx < 3) card.style.display = 'block';
   });
 
   // Кнопка "Завантажити ще" показується, якщо є що ще відкрити
@@ -182,7 +183,7 @@ loadMoreBtn.addEventListener('click', () => {
 
   if (!showAll) {
     // Показати всі
-    totalCards.forEach(card => card.classList.add('show'));
+    totalCards.forEach(card => (card.style.display = 'block'));
     loadMoreBtn.textContent = 'Приховати';
     loadMoreBtn.classList.add('open');
     showAll = true;
@@ -192,18 +193,14 @@ loadMoreBtn.addEventListener('click', () => {
       const categories = [
         ...new Set(Array.from(cards).map(c => c.dataset.category)),
       ];
-      cards.forEach(card => card.classList.remove('show'));
+      cards.forEach(card => (card.style.display = 'none'));
       categories.forEach(cat => {
         const catCard = Array.from(cards).find(c => c.dataset.category === cat);
-        if (catCard) catCard.classList.add('show');
+        if (catCard) catCard.style.display = 'block';
       });
     } else {
       totalCards.forEach((card, idx) => {
-        if (idx < 3) {
-          card.classList.add('show');
-        } else {
-          card.classList.remove('show');
-        }
+        card.style.display = idx < 3 ? 'block' : 'none';
       });
     }
 
