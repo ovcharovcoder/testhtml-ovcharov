@@ -102,7 +102,7 @@
   });
 })();
 
-// Cards
+// Tabs filter for cards
 const tabs = document.querySelectorAll('.tab');
 const cards = document.querySelectorAll('.card');
 const loadMoreBtn = document.getElementById('loadMore');
@@ -211,3 +211,4 @@ loadMoreBtn.addEventListener('click', () => {
 
 // Ініціалізація
 filterCards('all');
+
