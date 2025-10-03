@@ -447,6 +447,19 @@ body {
   padding-right: 40px;
 }
 
+.card {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s ease; /* плавність */
+}
+
+.card.show {
+  opacity: 1;
+  max-height: 500px; /* задати приблизну висоту */
+}
+
+
 @media (max-width: 1180px) {
   .contact__inner {
     flex-wrap: wrap;
@@ -503,5 +516,6 @@ body {
     gap: 40px;
   }
 }
+
 
 
