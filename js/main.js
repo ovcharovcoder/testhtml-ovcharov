@@ -102,8 +102,7 @@
   });
 })();
 
-
-// Tabs filter for cards
+// Card
 const tabs = document.querySelectorAll('.tab');
 const cards = document.querySelectorAll('.card');
 const loadMoreBtn = document.getElementById('loadMore');
@@ -120,11 +119,14 @@ function filterCards(filter) {
   // Активна вкладка
   tabs.forEach(tab => tab.classList.remove('active'));
   document
-    .querySelector(`.tab[data-filter="${filter}"]`)
-    .classList.add('active');
+  .querySelector(`.tab[data-filter="${filter}"]`)
+  .classList.add('active');
 
   // Сховаємо всі картки
-  cards.forEach(card => (card.style.display = 'none'));
+  cards.forEach(card => {
+    card.style.display = 'none';
+    card.classList.remove('visible');
+  });
 
   let filteredCards = [];
 
@@ -142,9 +144,12 @@ function filterCards(filter) {
     );
   }
 
-  // Показуємо максимум 3 картки
+  // Показуємо максимум 3 картки з анімацією
   filteredCards.forEach((card, idx) => {
-    if (idx < 3) card.style.display = 'block';
+    if (idx < 3) {
+      card.style.display = 'block';
+      setTimeout(() => card.classList.add('visible'), idx * 100 + 10);
+    }
   });
 
   // Кнопка "Завантажити ще" показується, якщо є що ще відкрити
@@ -182,27 +187,47 @@ loadMoreBtn.addEventListener('click', () => {
   }
 
   if (!showAll) {
-    // Показати всі
-    totalCards.forEach(card => (card.style.display = 'block'));
+    // Показати всі картки з анімацією
+    totalCards.forEach((card, idx) => {
+      card.style.display = 'block';
+      setTimeout(() => card.classList.add('visible'), idx * 100);
+    });
     loadMoreBtn.textContent = 'Приховати';
     loadMoreBtn.classList.add('open');
     showAll = true;
   } else {
-    // Повернути до початкових карток
-    if (currentFilter === 'all') {
-      const categories = [
-        ...new Set(Array.from(cards).map(c => c.dataset.category)),
-      ];
-      cards.forEach(card => (card.style.display = 'none'));
-      categories.forEach(cat => {
-        const catCard = Array.from(cards).find(c => c.dataset.category === cat);
-        if (catCard) catCard.style.display = 'block';
+    // Приховати всі картки
+    cards.forEach(card => {
+      card.classList.remove('visible');
+      setTimeout(() => {
+        card.style.display = 'none';
+      }, 450); // Час затримки відповідає тривалості анімації
+    });
+
+    // Повернути до початкових карток з анімацією
+    setTimeout(() => {
+      let filteredCards = [];
+      if (currentFilter === 'all') {
+        const categories = [
+          ...new Set(Array.from(cards).map(c => c.dataset.category)),
+        ];
+        categories.forEach(cat => {
+          const catCard = Array.from(cards).find(c => c.dataset.category === cat);
+          if (catCard) filteredCards.push(catCard);
+        });
+      } else {
+        filteredCards = Array.from(cards).filter(
+          c => c.dataset.category === currentFilter
+        );
+      }
+
+      filteredCards.forEach((card, idx) => {
+        if (idx < 3) {
+          card.style.display = 'block';
+          setTimeout(() => card.classList.add('visible'), idx * 100 + 10);
+        }
       });
-    } else {
-      totalCards.forEach((card, idx) => {
-        card.style.display = idx < 3 ? 'block' : 'none';
-      });
-    }
+    }, 450); // Запускаємо після завершення анімації приховування
 
     loadMoreBtn.textContent = 'Завантажити ще';
     loadMoreBtn.classList.remove('open');
