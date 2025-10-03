@@ -342,7 +342,7 @@ body {
 }
 
 .contact {
-  padding-top: 200px;
+  padding: 200px 0 100px 0;
 }
 
 .contact__inner {
@@ -503,3 +503,4 @@ body {
     gap: 40px;
   }
 }
+
