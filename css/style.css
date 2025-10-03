@@ -218,7 +218,7 @@ body {
 .tab.active::after {
   content: '';
   position: absolute;
-  bottom: -5px; /* відступ від тексту 5px */
+  bottom: -5px;
   left: 0;
   right: 0;
   height: 2px;
@@ -236,7 +236,15 @@ body {
 .card {
   width: 440px;
   box-sizing: border-box;
-  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--transition-time) ease, transform var(--transition-time) ease;
+}
+
+.card.visible {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .card__wrapper {
@@ -338,11 +346,11 @@ body {
 }
 
 #loadMore.open::after {
-  transform: rotate(180deg) translateY(-1px); /* стрілка вгору */
+  transform: rotate(180deg) translateY(-1px);
 }
 
 .contact {
-  padding: 200px 0 50px 0;
+  padding-top: 200px;
 }
 
 .contact__inner {
@@ -503,4 +511,3 @@ body {
     gap: 40px;
   }
 }
-
