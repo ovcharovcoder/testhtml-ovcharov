@@ -123,7 +123,7 @@ function filterCards(filter) {
     .classList.add('active');
 
   // Сховаємо всі картки
-  cards.forEach(card => (card.style.display = 'none'));
+  cards.forEach(card => (card.classList.remove('show')));
 
   let filteredCards = [];
 
@@ -143,7 +143,7 @@ function filterCards(filter) {
 
   // Показуємо максимум 3 картки
   filteredCards.forEach((card, idx) => {
-    if (idx < 3) card.style.display = 'block';
+    if (idx < 3) card.classList.add('show');
   });
 
   // Кнопка "Завантажити ще" показується, якщо є що ще відкрити
@@ -211,4 +211,5 @@ loadMoreBtn.addEventListener('click', () => {
 
 // Ініціалізація
 filterCards('all');
+
 
