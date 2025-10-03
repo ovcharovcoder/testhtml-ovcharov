@@ -123,7 +123,7 @@ function filterCards(filter) {
     .classList.add('active');
 
   // Сховаємо всі картки
-  cards.forEach(card => (card.style.display = 'none'));
+  cards.forEach(card => card.classList.remove('show'));
 
   let filteredCards = [];
 
@@ -143,7 +143,7 @@ function filterCards(filter) {
 
   // Показуємо максимум 3 картки
   filteredCards.forEach((card, idx) => {
-    if (idx < 3) card.style.display = 'block';
+    if (idx < 3) card.classList.add('show');
   });
 
   // Кнопка "Завантажити ще" показується, якщо є що ще відкрити
@@ -182,7 +182,7 @@ loadMoreBtn.addEventListener('click', () => {
 
   if (!showAll) {
     // Показати всі
-    totalCards.forEach(card => (card.style.display = 'block'));
+    totalCards.forEach(card => card.classList.add('show'));
     loadMoreBtn.textContent = 'Приховати';
     loadMoreBtn.classList.add('open');
     showAll = true;
@@ -192,14 +192,18 @@ loadMoreBtn.addEventListener('click', () => {
       const categories = [
         ...new Set(Array.from(cards).map(c => c.dataset.category)),
       ];
-      cards.forEach(card => (card.style.display = 'none'));
+      cards.forEach(card => card.classList.remove('show'));
       categories.forEach(cat => {
         const catCard = Array.from(cards).find(c => c.dataset.category === cat);
-        if (catCard) catCard.style.display = 'block';
+        if (catCard) catCard.classList.add('show');
       });
     } else {
       totalCards.forEach((card, idx) => {
-        card.style.display = idx < 3 ? 'block' : 'none';
+        if (idx < 3) {
+          card.classList.add('show');
+        } else {
+          card.classList.remove('show');
+        }
       });
     }
 
