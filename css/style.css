@@ -251,7 +251,6 @@ body {
   padding: 20px 12px;
   border: 1px solid var(--color-light-gray-o-20);
   border-bottom: none;
-  cursor: pointer;
 }
 
 #loadMore {
@@ -512,6 +511,7 @@ body {
     gap: 40px;
   }
 }
+
 
 
 
